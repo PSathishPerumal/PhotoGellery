@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+</head>
+
+<body>
+    <div>
+        <h1 style="text-align: center;">Image Gallery</h1>
+    </div>
+    <div class="imagecontainer">
+        <div class="images">
+            <img src="image1.jpeg" onclick="showImage(this)">
+        </div>
+        <div class="images">
+            <img src="image2.jpg" onclick="showImage(this)">
+        </div>
+        <div class="images">
+            <img src="image3.jpg" onclick="showImage(this)">
+        </div>
+        <div class="images">
+            <img src="image4.jpeg" onclick="showImage(this)">
+        </div>
+        <div class="images">
+            <img src="image5.jpg" onclick="showImage(this)">
+        </div>
+        <div class="images">
+            <img src="image6.jpeg" onclick="showImage(this)">
+        </div>
+        <div class="images">
+            <img src="image7.jpg" onclick="showImage(this)">
+        </div>
+        <div class="images">
+            <img src="image8.jpg" onclick="showImage(this)">
+        </div>
+
+
+
+    </div>
+
+    <div id="overlay" class="overlay">
+        <span class="close-btn" onclick="closeImage()"> &times;</span>
+        <img id="fullImage" class="full-img" src="" alt="Zoomed">
+    </div>
+
+
+</body>
+
+<style>
+    .images img {
+        height: 250px;
+        width: 200px;
+        padding: 10px;
+        margin: 20px;
+        border: 5px;
+        border: grey solid 5px;
+        border-radius: 10px;
+        transition: 1s;
+        transform: rotate(-10deg);
+
+    }
+
+    .images img:hover {
+        cursor: pointer;
+
+        transform: rotate(0deg);
+    }
+
+    .imagecontainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .overlay {
+        position: fixed;
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        flex-direction: column;
+    }
+
+    .full-img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+
+</html>
+
+<script>
+    function showImage(imgElement) {
+        const overlay = document.getElementById("overlay");
+        const fullImage = document.getElementById("fullImage");
+
+        fullImage.src = imgElement.src;
+        overlay.style.display = "flex";
+    }
+
+    function closeImage() {
+        document.getElementById("overlay").style.display = "none";
+    }
+
+</script>
